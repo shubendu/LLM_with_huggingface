@@ -2,9 +2,10 @@ from flask import Flask, request
 import requests
 from flask import jsonify
 from transformers import AutoTokenizer
-model_repo = "google/flan-t5-xxl"
-tk = AutoTokenizer.from_pretrained(model_repo)
-API_URL = "https://api-inference.huggingface.co/models/google/flan-t5-xxl"
+# model_repo = "google/flan-t5-xxl"
+model_repo = "timdettmers/guanaco-33b-merged"
+# tk = AutoTokenizer.from_pretrained(model_repo)
+API_URL = f"https://api-inference.huggingface.co/models/{model_repo}"
 headers = {"Authorization": "Bearer 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"}
 
 def query(payload):
@@ -41,7 +42,7 @@ def echo():
     text = request.form.get('text')
     
     output = query({
-    "inputs": text,"parameters":{"max_new_tokens":tk.model_max_length}
+    "inputs": text,"parameters":{"max_new_tokens":512}
     })
 
     print(output[0]["generated_text"])

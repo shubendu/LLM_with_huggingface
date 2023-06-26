@@ -40,7 +40,7 @@ def home():
 
 @app.route('/api/res', methods=['POST'])
 def echo():
-    text = request.json.get('text')
+    text = request.form.get('text')
     print("++++++++++++++++++++++++++++++++++")
     print(type(text))
     print(text)

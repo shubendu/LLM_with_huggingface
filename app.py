@@ -65,4 +65,5 @@ def echo_postman():
     return {'response': output[0]["generated_text"].replace('\n',' ').split("#")[0]}
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run()
+    # app.run(debug=True)

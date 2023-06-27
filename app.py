@@ -61,7 +61,8 @@ def echo_postman():
     "inputs": text,"parameters":{"max_new_tokens":250,"return_full_text": False}
     })
     #return {'res':text}
-    return {'response': output[0]["generated_text"]}
+    print(output[0]["generated_text"])
+    return {'response': output[0]["generated_text"].replace('\n',' ').split("#")[0]}
 
 if __name__ == '__main__':
     app.run(debug=True)
